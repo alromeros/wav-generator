@@ -59,24 +59,25 @@ int main()
     wav << subchunk2_size;
 
     int start_audio = wav.tellp();
-    int tone = 16;
+    int toneModifier = 16;
 
     for (int i = 0; i < sample_rate * duration; i++)
     {
+        srand(time(NULL));
         // Respect max amplitude
         // operate as a wave
         double amplitude = (double)i / sample_rate * max_amplitude;
-        double value = sin((2 * 3.14 * i * frequency / tone) / sample_rate);
+        double value = sin((2 * 3.14 * i * frequency / toneModifier) / sample_rate);
 
         double channel1 = amplitude * value;
-        double channel2 = (max_amplitude - amplitude) * value;
+        double channel2 = (max_amplitude - amplitude) * value - rand();
     
         write_as_bytes(wav, channel1, 2);
         write_as_bytes(wav, channel2, 2);
         
-        if (!(i % 100000) && (tone > 1))
+        if (!(i % 100000) && (toneModifier > 1))
         {
-            tone--;
+            toneModifier--;
         }
     }
 

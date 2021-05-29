@@ -32,7 +32,7 @@ const int bits_per_sample = 16;
 const std::string subchunk2_id = "data";
 const std::string subchunk2_size = "----";
 
-const int duration = 10;
+const int duration = 15;
 const int max_amplitude = 32760;
 const double frequency = 250;
 
