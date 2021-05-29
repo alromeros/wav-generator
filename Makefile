@@ -10,13 +10,13 @@
 # ********************************************************* #
 
 CC        = g++
-CFLAGS    = -Wall -Werror -Wextra
+CFLAGS    = -Wall -Werror -Wextra -g3
 SRC       = wav_generator.cpp
 OBJ       = $(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))
 DEL       = rm -rf
 NAME      = wav-generator
 INC       = wav_generator.h
-WAV		  = *.wav
+WAV       = *.wav
 SRCDIR    = ./src
 INCDIR    = ./inc
 OBJDIR    = ./obj
@@ -40,3 +40,6 @@ sclean: fclean
 	$(DEL) $(WAV)
 
 re: fclean all
+
+test: all
+	@echo "my_test" | ./$(NAME)
