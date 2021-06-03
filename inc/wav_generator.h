@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cstring>
 
 // Riff chunk
 const std::string chunk_id = "RIFF";
@@ -36,4 +37,6 @@ const int duration = 15;
 const int max_amplitude = 32760;
 const double frequency = 250;
 
-void write_as_bytes(std::ofstream &file, int value, int byte_size);
+const int header_lenght = 20;
+
+void write_as_bytes(std::fstream &file, int value, int byte_size);
